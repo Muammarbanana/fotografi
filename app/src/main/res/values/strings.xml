@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">App Fotografi</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="atau">Atau</string>
+    <string name="tidak_punya_akun">Tidak Punya Akun?</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="lupa_kata_sandi">Lupa kata sandi?</string>
+</resources>
