@@ -7,4 +7,10 @@
     <string name="tidak_punya_akun">Tidak Punya Akun?</string>
     <string name="buat_akun">Buat Akun</string>
     <string name="lupa_kata_sandi">Lupa kata sandi?</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="masukkan_nama_anda">Masukkan nama Anda</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="text_tos">By clicking on \'Daftar\' you agree to our Terms of Use and Privacy Policy.</string>
 </resources>
