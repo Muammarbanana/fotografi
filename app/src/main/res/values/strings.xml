@@ -12,4 +12,12 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="daftar">Daftar</string>
     <string name="text_tos">By clicking on \'Daftar\' you agree to our \n Terms of Use and Privacy Policy.</string>
+    <string name="rate_pelayanan_kami">Rate Pelayanan Kami</string>
+    <string name="nama_fotografer">Nama Fotografer</string>
+    <string name="nilai">5</string>
+    <string name="min">0</string>
+    <string name="makx">10</string>
+    <string name="tolong_komentar">Tolong beri komentar Anda, jika berkenan!</string>
+    <string name="komentar">Komentar</string>
+    <string name="kirim">Kirim</string>
 </resources>
