@@ -14,7 +14,6 @@ public class register extends AppCompatActivity {
     }
 
     public void tologinpage(View view) {
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);
+        finish();
     }
 }
