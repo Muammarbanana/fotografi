@@ -20,4 +20,15 @@
     <string name="tolong_komentar">Tolong beri komentar Anda, jika berkenan!</string>
     <string name="komentar">Komentar</string>
     <string name="kirim">Kirim</string>
+    <string name="total_biaya">Total Biaya</string>
+    <string name="rp">Rp</string>
+    <string name="divide">:</string>
+    <string name="biaya_1">Biaya 1</string>
+    <string name="tempat_fotografi_2">Tempat Fotografi 2</string>
+    <string name="tempat_fotografi_1">Tempat Fotografi 1</string>
+    <string name="jenis_sesi">Jenis Sesi</string>
+    <string name="status">Searching</string>
+    <string name="tanggal_mulai">Tanggal mulai</string>
+    <string name="jam_status">Jam status</string>
+    <string name="proceed_to_next_phase">Proceed to Next Phase</string>
 </resources>
