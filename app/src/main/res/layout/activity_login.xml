@@ -82,7 +82,7 @@
         android:layout_marginRight="130dp"
         android:background="@drawable/rounded_button"
         android:text="@string/login"
-        android:onClick="tohalamanutama"
+        android:onClick="login_run"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"

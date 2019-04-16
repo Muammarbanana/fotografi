@@ -18,10 +18,10 @@ public class HalamanUtama extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_utama);
 
-        int[] hargatotal = new int[2];
+        int[] hargatotal = new int[1];
 
         // data untuk recyclerview
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             hargatotal[i] = 120000;
         }
 
