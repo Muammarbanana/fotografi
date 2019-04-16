@@ -30,7 +30,6 @@ public class ActivityLogin extends AppCompatActivity {
     private EditText etpassword;
     private String username;
     private String password;
-    private ProgressBar progressBar;
     private String login_url = "http://10.145.2.210/member/login.php";
     private SessionHandler session;
 
@@ -117,12 +116,12 @@ public class ActivityLogin extends AppCompatActivity {
 
     private boolean validateInputs() {
         if(KEY_EMPTY.equals(username)){
-            etusername.setError("Username cannot be empty");
+            etusername.setError("Isi username dulu mas");
             etusername.requestFocus();
             return false;
         }
         if(KEY_EMPTY.equals(password)){
-            etpassword.setError("Password cannot be empty");
+            etpassword.setError("Isi passwordnya babi");
             etpassword.requestFocus();
             return false;
         }
