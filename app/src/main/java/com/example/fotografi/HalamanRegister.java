@@ -1,6 +1,5 @@
 package com.example.fotografi;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +10,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.fotografi.login_register.MySingleton;
+import com.example.fotografi.login_register.SessionHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class register extends AppCompatActivity {
+public class HalamanRegister extends AppCompatActivity {
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_FULL_NAME = "full_name";
@@ -28,7 +29,7 @@ public class register extends AppCompatActivity {
     private String username;
     private String password;
     private String fullName;
-    private String register_url = "http://10.145.2.210/member/register.php";
+    private String register_url = "http://10.145.2.210/member/HalamanRegister.php";
     private SessionHandler session;
 
     @Override

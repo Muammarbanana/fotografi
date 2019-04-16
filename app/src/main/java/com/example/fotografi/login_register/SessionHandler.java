@@ -1,7 +1,9 @@
-package com.example.fotografi;
+package com.example.fotografi.login_register;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.fotografi.login_register.User;
 
 import java.util.Date;
 

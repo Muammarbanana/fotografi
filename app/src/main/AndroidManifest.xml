@@ -14,10 +14,10 @@
         <activity android:name=".HalamanRating"></activity>
         <activity android:name=".HalamanUtama" />
         <activity
-            android:name=".register"
+            android:name=".HalamanRegister"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".HalamanLogin"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
