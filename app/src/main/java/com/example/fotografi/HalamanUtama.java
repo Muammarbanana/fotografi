@@ -45,6 +45,7 @@ public class HalamanUtama extends AppCompatActivity {
         session.logoutUser();
         Intent i = new Intent(HalamanUtama.this, HalamanLogin.class);
         startActivity(i);
+        finish();
     }
 
 

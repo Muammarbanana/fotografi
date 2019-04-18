@@ -29,7 +29,7 @@ public class HalamanRegister extends AppCompatActivity {
     private String username;
     private String password;
     private String fullName;
-    private String register_url = "http://10.145.2.210/member/HalamanRegister.php";
+    private String register_url = "https://fotografidb.herokuapp.com/register.php";
     private SessionHandler session;
 
     @Override

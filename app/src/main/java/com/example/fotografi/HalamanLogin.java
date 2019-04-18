@@ -28,7 +28,7 @@ public class HalamanLogin extends AppCompatActivity {
     private EditText etpassword;
     private String username;
     private String password;
-    private String login_url = "http://10.145.2.210/member/login.php";
+    private String login_url = "https://fotografidb.herokuapp.com/login.php";
     private SessionHandler session;
 
     @Override
@@ -55,6 +55,7 @@ public class HalamanLogin extends AppCompatActivity {
     public void tohalamanutama() {
         Intent i = new Intent(getApplicationContext(),HalamanUtama.class);
         startActivity(i);
+        finish();
     }
 
     public void login_run(View view) {
