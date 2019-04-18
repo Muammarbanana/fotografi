@@ -22,13 +22,16 @@ public class HalamanRegister extends AppCompatActivity {
     private static final String KEY_FULL_NAME = "full_name";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
+    private static final String KEY_EMAIL = "email";
     private static final String KEY_EMPTY = "";
     private EditText etusername;
     private EditText etpassword;
     private EditText etfullname;
+    private EditText etemail;
     private String username;
     private String password;
     private String fullName;
+    private String email;
     private String register_url = "https://fotografidb.herokuapp.com/register.php";
     private SessionHandler session;
 
@@ -41,6 +44,7 @@ public class HalamanRegister extends AppCompatActivity {
         etusername = findViewById(R.id.et_username);
         etfullname = findViewById(R.id.et_nama);
         etpassword = findViewById(R.id.et_password);
+        etemail = findViewById(R.id.editText3);
     }
 
     public void tologinpage() {
@@ -55,6 +59,7 @@ public class HalamanRegister extends AppCompatActivity {
         username = etusername.getText().toString().toLowerCase().trim();
         password = etpassword.getText().toString().trim();
         fullName = etfullname.getText().toString().trim();
+        email = etemail.getText().toString().trim();
         if (validateInputs()) {
             registerUser();
         }
@@ -67,6 +72,7 @@ public class HalamanRegister extends AppCompatActivity {
             request.put(KEY_USERNAME, username);
             request.put(KEY_PASSWORD, password);
             request.put(KEY_FULL_NAME, fullName);
+            request.put(KEY_EMAIL, email);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -128,6 +134,11 @@ public class HalamanRegister extends AppCompatActivity {
         if (KEY_EMPTY.equals(password)) {
             etpassword.setError("Password cannot be empty");
             etpassword.requestFocus();
+            return false;
+        }
+        if (KEY_EMPTY.equals(email)){
+            etemail.setError("E-mail cannot be empty");
+            etemail.requestFocus();
             return false;
         }
 
