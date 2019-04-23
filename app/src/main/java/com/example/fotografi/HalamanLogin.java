@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,6 +29,7 @@ public class HalamanLogin extends AppCompatActivity {
     private EditText etpassword;
     private String username;
     private String password;
+    private ProgressBar progressBar;
     private String login_url = "https://fotografidb.herokuapp.com/login.php";
     private SessionHandler session;
 

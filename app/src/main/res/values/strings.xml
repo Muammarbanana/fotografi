@@ -31,4 +31,31 @@
     <string name="tanggal_mulai">Tanggal mulai</string>
     <string name="jam_status">Jam status</string>
     <string name="proceed_to_next_phase">Proceed to Next Phase</string>
+    <string-array name="nama_tempat">
+        <item>Dago</item>
+        <item>Kopo</item>
+        <item>Lembang</item>
+        <item>Ciwidey</item>
+        <item>Pasteur</item>
+        <item>Soreang</item>
+        <item>Ciparay</item>
+        <item>Maribaya</item>
+        <item>Alun-Alun</item>
+        <item>Kawah Putih</item>
+        <item>Tangkuban Perahu</item>
+    </string-array>
+    <string-array name="nama_bulan">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
 </resources>
