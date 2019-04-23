@@ -35,7 +35,7 @@ public class HalamanUtama extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
         adapter = new HalamanUtamaAdapter (getActivity(),hargatotal);
         recyclerView.setAdapter(adapter);
-        
+
         return rootView;
     }
 
