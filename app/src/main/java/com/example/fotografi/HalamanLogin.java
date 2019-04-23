@@ -61,7 +61,7 @@ public class HalamanLogin extends AppCompatActivity {
 
 
     public void tohalamanutama() {
-        Intent i = new Intent(getApplicationContext(),HalamanUtama.class);
+        Intent i = new Intent(getApplicationContext(),HalamanUtamaRevised.class);
         startActivity(i);
         finish();
     }
