@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class HalamanLogin extends AppCompatActivity {
     private EditText etpassword;
     private String username;
     private String password;
+    private Button btn_login;
     private ProgressBar progressBar;
     private String login_url = "https://fotografidb.herokuapp.com/login.php";
     private SessionHandler session;
@@ -45,6 +47,10 @@ public class HalamanLogin extends AppCompatActivity {
 
         etusername = findViewById(R.id.editText_username);
         etpassword = findViewById(R.id.editText_password);
+        progressBar = findViewById(R.id.loading_login);
+        btn_login = findViewById(R.id.button_login);
+
+        progressBar.setVisibility(View.GONE);
 
     }
 
@@ -69,6 +75,8 @@ public class HalamanLogin extends AppCompatActivity {
     }
 
     public void login(){
+        btn_login.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         JSONObject request = new JSONObject();
         try {
             //Populate the request parameters
@@ -84,13 +92,13 @@ public class HalamanLogin extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             //Check if user got logged in successfully
-
                             if (response.getInt(KEY_STATUS) == 0) {
                                 session.loginUser(username,response.getString(KEY_FULL_NAME));
                                 Toast.makeText(getApplicationContext(),"Login berhasil",Toast.LENGTH_SHORT).show();
                                 tohalamanutama();
 
                             }else{
+                                btn_login.setVisibility(View.VISIBLE);
                                 Toast.makeText(getApplicationContext(),
                                         response.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
 
