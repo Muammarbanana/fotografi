@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.fotografi.login_register.SessionHandler;
 
@@ -34,21 +35,7 @@ public class HalamanUtama extends Fragment {
         adapter = new HalamanUtamaAdapter (getActivity(),hargatotal);
         recyclerView.setAdapter(adapter);
 
-
         return rootView;
     }
-
-    public void toratingpage(View view) {
-        Intent i = new Intent(getActivity(),HalamanRating.class);
-        startActivity(i);
-    }
-
-    public void logout(View view){
-        session.logoutUser();
-        Intent i = new Intent(getActivity(), HalamanLogin.class);
-        startActivity(i);
-        getActivity().finish();
-    }
-
 
 }

@@ -23,6 +23,7 @@ public class HalamanRegister extends AppCompatActivity {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_TYPE = "type";
     private static final String KEY_EMPTY = "";
     private EditText etusername;
     private EditText etpassword;
@@ -85,7 +86,8 @@ public class HalamanRegister extends AppCompatActivity {
                             //Check if user got registered successfully
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
-                                session.loginUser(username,fullName);
+                                String type = null;
+                                session.loginUser(username,fullName,type);
                                 tologinpage();
 
                             }else if(response.getInt(KEY_STATUS) == 1){

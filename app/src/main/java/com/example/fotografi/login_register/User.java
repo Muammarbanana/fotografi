@@ -6,6 +6,7 @@ public class User {
     String username;
     String fullname;
     String email;
+    String type;
     Date sessionExpiryDate;
 
     public String getUsername() {
@@ -30,6 +31,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getSessionExpiryDate() {

@@ -25,6 +25,7 @@ public class HalamanLogin extends AppCompatActivity {
     private static final String KEY_FULL_NAME = "full_name";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
+    private static final String KEY_TYPE = "type";
     private static final String KEY_EMPTY = "";
     private EditText etusername;
     private EditText etpassword;
@@ -93,7 +94,7 @@ public class HalamanLogin extends AppCompatActivity {
                         try {
                             //Check if user got logged in successfully
                             if (response.getInt(KEY_STATUS) == 0) {
-                                session.loginUser(username,response.getString(KEY_FULL_NAME));
+                                session.loginUser(username,response.getString(KEY_FULL_NAME),response.getString(KEY_TYPE));
                                 Toast.makeText(getApplicationContext(),"Login berhasil",Toast.LENGTH_SHORT).show();
                                 tohalamanutama();
 
@@ -130,7 +131,7 @@ public class HalamanLogin extends AppCompatActivity {
             return false;
         }
         if(KEY_EMPTY.equals(password)){
-            etpassword.setError("Isi passwordnya babi");
+            etpassword.setError("Isi passwordnya");
             etpassword.requestFocus();
             return false;
         }
