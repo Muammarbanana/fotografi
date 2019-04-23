@@ -87,7 +87,7 @@ public class HalamanRegister extends AppCompatActivity {
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
                                 String type = null;
-                                session.loginUser(username,fullName,type);
+                                session.loginUser(username,fullName,type,email);
                                 tologinpage();
 
                             }else if(response.getInt(KEY_STATUS) == 1){

@@ -12,6 +12,7 @@ public class SessionHandler {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_EXPIRES = "expires";
     private static final String KEY_FULL_NAME = "full_name";
+    private static final String KEY_EMAIL = "email";
     private static final String KEY_TYPE = "type";
     private static final String KEY_EMPTY = "";
     private Context mContext;
@@ -30,9 +31,10 @@ public class SessionHandler {
      * @param username
      * @param fullName
      */
-    public void loginUser(String username, String fullName, String type) {
+    public void loginUser(String username, String fullName, String type, String email) {
         mEditor.putString(KEY_USERNAME, username);
         mEditor.putString(KEY_FULL_NAME, fullName);
+        mEditor.putString(KEY_EMAIL, email);
         mEditor.putString(KEY_TYPE,type);
         Date date = new Date();
 
@@ -80,6 +82,7 @@ public class SessionHandler {
         user.setUsername(mPreferences.getString(KEY_USERNAME, KEY_EMPTY));
         user.setFullname(mPreferences.getString(KEY_FULL_NAME, KEY_EMPTY));
         user.setType(mPreferences.getString(KEY_TYPE,KEY_EMPTY));
+        user.setEmail(mPreferences.getString(KEY_EMAIL,KEY_EMPTY));
         user.setSessionExpiryDate(new Date(mPreferences.getLong(KEY_EXPIRES, 0)));
 
         return user;

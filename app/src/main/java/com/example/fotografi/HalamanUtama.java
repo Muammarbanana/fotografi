@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fotografi.login_register.SessionHandler;
@@ -34,7 +35,7 @@ public class HalamanUtama extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
         adapter = new HalamanUtamaAdapter (getActivity(),hargatotal);
         recyclerView.setAdapter(adapter);
-
+        
         return rootView;
     }
 

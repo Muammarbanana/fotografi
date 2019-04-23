@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fotografi.login_register.SessionHandler;
 
@@ -22,14 +24,25 @@ public class HalamanUtamaRevised extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SessionHandler session;
+    private TextView username_nav;
+    private TextView email_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        session = new SessionHandler(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_utama_revised);
+
+        session = new SessionHandler(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        username_nav = headerview.findViewById(R.id.username_navigatinodrawer);
+        email_nav = headerview.findViewById(R.id.email_navigationdrawer);
+
+        username_nav.setText(session.getUserDetails().getFullname());
+        email_nav.setText(session.getUserDetails().getEmail());
 
         Fragment fragment = null;
         Class fragmentClass = null;
@@ -58,7 +71,6 @@ public class HalamanUtamaRevised extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
