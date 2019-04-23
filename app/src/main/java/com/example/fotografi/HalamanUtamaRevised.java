@@ -47,8 +47,8 @@ public class HalamanUtamaRevised extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(HalamanUtamaRevised.this, HalamanOrder.class);
+                startActivity(i);
             }
         });
 
@@ -103,6 +103,7 @@ public class HalamanUtamaRevised extends AppCompatActivity
         Class fragmentClass = null;
         if (id == R.id.nav_pesanan) {
             fragmentClass = HalamanUtama.class;
+            return true;
         } else if (id == R.id.nav_ulasan) {
             Intent i = new Intent(this, HalamanRating.class);
             startActivity(i);

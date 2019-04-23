@@ -42,9 +42,5 @@ public class HalamanRating extends AppCompatActivity {
     public void tohalamanutama(View view) {
         finish();
     }
-
-    public void toorderpage(View view) {
-        Intent i = new Intent(getApplicationContext(),HalamanOrder.class);
-        startActivity(i);
-    }
+    
 }
