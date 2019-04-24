@@ -71,6 +71,10 @@ public class HalamanUtamaRevised extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        if(session.getUserDetails().getType().equals("fotografer")){
+            fab.hide();
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 

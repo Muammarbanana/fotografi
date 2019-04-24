@@ -48,14 +48,6 @@ public class HalamanRegister extends AppCompatActivity {
         etemail = findViewById(R.id.editText3);
     }
 
-    public void tologinpage() {
-        finish();
-    }
-
-    public void tologinpage2(View view) {
-        finish();
-    }
-
     public void registerRun(View view){
         username = etusername.getText().toString().toLowerCase().trim();
         password = etpassword.getText().toString().trim();
@@ -88,7 +80,8 @@ public class HalamanRegister extends AppCompatActivity {
                                 //Set the user session
                                 String type = null;
                                 session.loginUser(username,fullName,type,email);
-                                tologinpage();
+                                Toast.makeText(getApplicationContext(),"Register berhasil",Toast.LENGTH_SHORT).show();
+                                finish();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
                                 //Display error message if username is already existsing
