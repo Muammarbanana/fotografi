@@ -229,6 +229,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline25"
@@ -241,24 +242,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonTint="#242e96"
-            android:text="1 Jam" />
+            android:text="1 Jam"
+            app:buttonTint="#242e96" />
 
         <RadioButton
             android:id="@+id/rbSesi2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonTint="#242e96"
-            android:text="2 Jam" />
+            android:text="2 Jam"
+            app:buttonTint="#242e96" />
 
         <RadioButton
             android:id="@+id/rbSesi3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:buttonTint="#242e96"
-            android:text="3 Jam" />
+            android:text="3 Jam"
+            app:buttonTint="#242e96" />
     </RadioGroup>
 
     <TextView
@@ -280,12 +281,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/divide"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/guideline29"
-        app:layout_constraintTop_toTopOf="@+id/rgSesi" />
+        app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <EditText
         android:id="@+id/etCatatan_order"

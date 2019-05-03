@@ -17,11 +17,31 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
     private LayoutInflater mInflater;
     private int[] hargatotal = new int[0];
     private SessionHandler session;
+    private Context context;
+    private AlertDialog.Builder builder;
 
     HalamanUtamaAdapter(Context context, int[] hargatotal){
         this.mInflater = LayoutInflater.from(context);
         this.hargatotal = hargatotal;
+        this.context = context;
         session = new SessionHandler(context);
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+        builder2.setCancelable(true);
+        builder2.setTitle("Konfirmasi");
+        builder2.setMessage("Yakin ingin melanjutkan");
+        builder2.setPositiveButton("Lanjut",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder2.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        this.builder = builder2;
     }
 
     @Override
@@ -41,11 +61,14 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
         if(session.getUserDetails().getType().equals("fotografer")){
             holder.tombolstatus.setOnClickListener(new View.OnClickListener() {
                 int i = 1;
+                AlertDialog dialog = builder.create();
+
 
                 @Override
                 public void onClick(View v) {
                     switch (i) {
                         case 1:
+                            dialog.show();
                             holder.status.setText("Transfer DP");
                             i = i + 1;
                             break;

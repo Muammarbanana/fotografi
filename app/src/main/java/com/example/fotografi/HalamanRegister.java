@@ -3,7 +3,9 @@ package com.example.fotografi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,6 +35,8 @@ public class HalamanRegister extends AppCompatActivity {
     private String password;
     private String fullName;
     private String email;
+    private Button btn_regis;
+    private ProgressBar progressBar;
     private String register_url = "https://fotografidb.herokuapp.com/register.php";
     private SessionHandler session;
 
@@ -46,6 +50,10 @@ public class HalamanRegister extends AppCompatActivity {
         etfullname = findViewById(R.id.et_nama);
         etpassword = findViewById(R.id.et_password);
         etemail = findViewById(R.id.editText3);
+        btn_regis = findViewById(R.id.button_regis);
+        progressBar = findViewById(R.id.loading_register);
+
+        progressBar.setVisibility(View.GONE);
     }
 
     public void registerRun(View view){
@@ -59,6 +67,8 @@ public class HalamanRegister extends AppCompatActivity {
     }
 
     public void registerUser(){
+        btn_regis.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         JSONObject request = new JSONObject();
         try {
             //Populate the request parameters
@@ -84,11 +94,13 @@ public class HalamanRegister extends AppCompatActivity {
                                 finish();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
+                                btn_regis.setVisibility(View.VISIBLE);
                                 //Display error message if username is already existsing
                                 etusername.setError("Username already taken!");
                                 etusername.requestFocus();
 
                             }else{
+                                btn_regis.setVisibility(View.VISIBLE);
                                 Toast.makeText(getApplicationContext(),
                                         response.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
 
