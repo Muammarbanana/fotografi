@@ -13,7 +13,7 @@
     <string name="daftar">Daftar</string>
     <string name="text_tos">By clicking on \'Daftar\' you agree to our \n Terms of Use and Privacy Policy.</string>
     <string name="rate_pelayanan_kami">Rate Pelayanan Kami</string>
-    <string name="nama_fotografer">Nama Fotografer</string>
+    <string name="nama_fotografer">Fotografer belum tersedia</string>
     <string name="nilai">5</string>
     <string name="min">0</string>
     <string name="makx">10</string>
@@ -23,9 +23,9 @@
     <string name="total_biaya">Total Biaya</string>
     <string name="rp">Rp</string>
     <string name="divide">:</string>
-    <string name="biaya_1">Biaya 1</string>
+    <string name="biaya_1">Biaya</string>
     <string name="tempat_fotografi_2">Tempat Fotografi 2</string>
-    <string name="tempat_fotografi_1">Tempat Fotografi 1</string>
+    <string name="tempat_fotografi_1">Tempat Fotografi</string>
     <string name="jenis_sesi">Jenis Sesi</string>
     <string name="status">Searching</string>
     <string name="tanggal_mulai">Tanggal mulai</string>

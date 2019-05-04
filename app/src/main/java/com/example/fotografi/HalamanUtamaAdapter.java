@@ -12,18 +12,21 @@ import android.widget.TextView;
 
 import com.example.fotografi.login_register.SessionHandler;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapter.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private int[] hargatotal = new int[0];
+    private ArrayList<String> array = new ArrayList<>();
     private SessionHandler session;
     private Context context;
     private AlertDialog.Builder builder;
 
-    HalamanUtamaAdapter(Context context, int[] hargatotal){
+    HalamanUtamaAdapter(Context context, ArrayList<String> array){
         this.mInflater = LayoutInflater.from(context);
-        this.hargatotal = hargatotal;
         this.context = context;
+        this.array = array;
         session = new SessionHandler(context);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
         builder2.setCancelable(true);
@@ -57,7 +60,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.hargatotalku.setText(String.valueOf(hargatotal[position]));
+        holder.hargatotalku.setText(String.valueOf(array.get(position)));
         if(session.getUserDetails().getType().equals("fotografer")){
             holder.tombolstatus.setOnClickListener(new View.OnClickListener() {
                 int i = 1;
@@ -99,7 +102,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
 
     @Override
     public int getItemCount() {
-        return hargatotal.length;
+        return array.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:elevation="8dp"
+    android:layout_marginBottom="14dp"
     app:cardCornerRadius="6dp"
     app:cardUseCompatPadding="true">
 
@@ -21,10 +22,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:src="@drawable/fotografer"
             app:layout_constraintBottom_toTopOf="@+id/garis1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/fotografer" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline19"
@@ -82,25 +83,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/tanggal_mulai"
             android:textSize="8sp"
-            app:layout_constraintBottom_toTopOf="@+id/jam_status"
+            app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toEndOf="@+id/foto_fotografer"
             app:layout_constraintTop_toBottomOf="@+id/nama_fotografer" />
-
-        <TextView
-            android:id="@+id/jam_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/jam_status"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toBottomOf="@id/garis1"
-            app:layout_constraintStart_toEndOf="@+id/foto_fotografer"
-            app:layout_constraintTop_toBottomOf="@+id/tanggal_mulai" />
 
         <Button
             android:id="@+id/status"
@@ -110,9 +98,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_button_status"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:background="@drawable/rounded_button"
             android:text="@string/status"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light"
@@ -144,8 +132,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/garis1"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@+id/garis1" />
 
         <TextView
             android:id="@+id/tempat_fotografi"
@@ -158,28 +145,11 @@
             android:layout_marginRight="8dp"
             android:text="@string/tempat_fotografi_1"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/tempat_fotografi_2"
-            app:layout_constraintEnd_toStartOf="@+id/guideline21"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jenis_sesi" />
-
-        <TextView
-            android:id="@+id/tempat_fotografi_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/tempat_fotografi_2"
-            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/biaya_1"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tempat_fotografi" />
+            app:layout_constraintTop_toBottomOf="@+id/jenis_sesi" />
 
         <TextView
             android:id="@+id/biaya_1"
@@ -193,11 +163,11 @@
             android:layout_marginBottom="8dp"
             android:text="@string/biaya_1"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline20"
+            app:layout_constraintBottom_toTopOf="@+id/garis2"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tempat_fotografi_2" />
+            app:layout_constraintTop_toBottomOf="@+id/tempat_fotografi" />
 
         <TextView
             android:id="@+id/divide1"
@@ -227,28 +197,11 @@
             android:layout_marginRight="8dp"
             android:text="@string/divide"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/divide3"
-            app:layout_constraintEnd_toStartOf="@+id/guideline22"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toBottomOf="@+id/divide1" />
-
-        <TextView
-            android:id="@+id/divide3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/divide"
-            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/divide4"
             app:layout_constraintEnd_toStartOf="@+id/guideline22"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toBottomOf="@+id/divide2" />
+            app:layout_constraintTop_toBottomOf="@+id/divide1" />
 
         <TextView
             android:id="@+id/divide4"
@@ -262,31 +215,14 @@
             android:layout_marginBottom="8dp"
             android:text="@string/divide"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline20"
+            app:layout_constraintBottom_toTopOf="@+id/garis2"
             app:layout_constraintEnd_toStartOf="@+id/guideline22"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toBottomOf="@+id/divide3" />
+            app:layout_constraintTop_toBottomOf="@+id/divide2" />
 
         <TextView
             android:id="@+id/harga2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/rp"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/harga3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline22"
-            app:layout_constraintTop_toBottomOf="@+id/harga1" />
-
-        <TextView
-            android:id="@+id/harga3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -300,7 +236,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline22"
-            app:layout_constraintTop_toBottomOf="@+id/harga2" />
+            app:layout_constraintTop_toBottomOf="@+id/harga1" />
 
         <TextView
             android:id="@+id/harga1"
@@ -328,14 +264,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/rp"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline20"
+            app:layout_constraintBottom_toTopOf="@+id/garis2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline22"
-            app:layout_constraintTop_toBottomOf="@+id/harga3" />
+            app:layout_constraintTop_toBottomOf="@+id/harga2" />
 
         <View
             android:id="@+id/garis2"
@@ -344,7 +279,7 @@
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline20"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline20" />
 
         <TextView
             android:id="@+id/total_biaya"
