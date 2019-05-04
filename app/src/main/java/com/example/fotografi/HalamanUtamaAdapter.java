@@ -12,21 +12,25 @@ import android.widget.TextView;
 
 import com.example.fotografi.login_register.SessionHandler;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapter.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private ArrayList<String> array = new ArrayList<>();
+    private ArrayList<JSONObject> data = new ArrayList<>();
     private SessionHandler session;
     private Context context;
     private AlertDialog.Builder builder;
 
-    HalamanUtamaAdapter(Context context, ArrayList<String> array){
+    HalamanUtamaAdapter(Context context, ArrayList<JSONObject> data){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
-        this.array = array;
+        this.data = data;
         session = new SessionHandler(context);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
         builder2.setCancelable(true);
@@ -60,7 +64,16 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.hargatotalku.setText(String.valueOf(array.get(position)));
+        try {
+            holder.hargatotalku.setText(String.valueOf(data.get(position).getString("biaya")));
+            holder.status.setText(String.valueOf(data.get(position).getString("status")));
+            holder.sesi.setText(String.valueOf(data.get(position).getString("sesi")));
+            holder.biaya.setText(String.valueOf(data.get(position).getString("biaya")));
+            holder.lokasi.setText(String.valueOf(data.get(position).getString("lokasi")));
+            holder.tanggal.setText(String.valueOf(data.get(position).getString("tanggal")));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if(session.getUserDetails().getType().equals("fotografer")){
             holder.tombolstatus.setOnClickListener(new View.OnClickListener() {
                 int i = 1;
@@ -102,11 +115,15 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
 
     @Override
     public int getItemCount() {
-        return array.size();
+        return data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView hargatotalku;
+        public TextView lokasi;
+        public TextView sesi;
+        public TextView tanggal;
+        public TextView biaya;
         public Button tombolstatus;
         public Button status;
 
@@ -114,6 +131,10 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
             super(itemView);
             hargatotalku = itemView.findViewById(R.id.harga_total);
             tombolstatus = itemView.findViewById(R.id.buttonproses);
+            lokasi = itemView.findViewById(R.id.harga1);
+            sesi = itemView.findViewById(R.id.harga2);
+            biaya = itemView.findViewById(R.id.harga4);
+            tanggal = itemView.findViewById(R.id.tanggal_mulai);
             status = itemView.findViewById(R.id.status);
             itemView.setOnClickListener(this);
         }

@@ -47,38 +47,40 @@ public class HalamanUtama extends Fragment {
         int numberOfColumns = 1;
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
 
-        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
-                (pesanan_url, new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        ArrayList<String> array2 = new ArrayList<>();
-                        for(int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject jsonObject = response.getJSONObject(i);
-                                array.add(jsonObject);
-                                array2.add(array.get(i).getString("biaya"));
-                                //Toast.makeText(getActivity().getApplicationContext(),String.valueOf(array.size()),Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+        if(session.getUserDetails().getType().equals("fotografer")){
+            JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                    (pesanan_url, new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            for(int i = 0; i < response.length(); i++) {
+                                try {
+                                    JSONObject jsonObject = response.getJSONObject(i);
+                                    array.add(jsonObject);
+                                    //Toast.makeText(getActivity().getApplicationContext(),String.valueOf(array.size()),Toast.LENGTH_SHORT).show();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
+                            adapter = new HalamanUtamaAdapter (getActivity(),array);
+                            recyclerView.setAdapter(adapter);
                         }
-                        adapter = new HalamanUtamaAdapter (getActivity(),array2);
-                        recyclerView.setAdapter(adapter);
-                    }
-                }, new Response.ErrorListener() {
+                    }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
 
-                        //Display error message whenever an error occurs
-                        Toast.makeText(getActivity().getApplicationContext(),
-                                error.getMessage(), Toast.LENGTH_SHORT).show();
+                            //Display error message whenever an error occurs
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    error.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    }
-                });
+                        }
+                    });
 
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
+            // Access the RequestQueue through your singleton class.
+            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
+        }else{
+
+        }
 
         return rootView;
     }
