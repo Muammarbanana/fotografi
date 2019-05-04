@@ -7,7 +7,16 @@ public class User {
     String fullname;
     String email;
     String type;
+    String user_id;
     Date sessionExpiryDate;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getUsername() {
         return username;

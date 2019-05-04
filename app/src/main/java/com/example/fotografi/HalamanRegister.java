@@ -89,7 +89,6 @@ public class HalamanRegister extends AppCompatActivity {
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
                                 String type = null;
-                                session.loginUser(username,fullName,type,email);
                                 Toast.makeText(getApplicationContext(),"Register berhasil",Toast.LENGTH_SHORT).show();
                                 finish();
 

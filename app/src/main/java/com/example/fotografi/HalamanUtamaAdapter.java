@@ -28,7 +28,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
         AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
         builder2.setCancelable(true);
         builder2.setTitle("Konfirmasi");
-        builder2.setMessage("Yakin ingin melanjutkan");
+        builder2.setMessage("Yakin ingin melanjutkan?");
         builder2.setPositiveButton("Lanjut",
                 new DialogInterface.OnClickListener() {
                     @Override
