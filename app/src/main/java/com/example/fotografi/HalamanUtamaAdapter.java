@@ -64,6 +64,11 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
             holder.biaya.setText(String.valueOf(data.get(position).getString("biaya")));
             holder.lokasi.setText(String.valueOf(data.get(position).getString("lokasi")));
             holder.tanggal.setText(String.valueOf(data.get(position).getString("tanggal")));
+            if(String.valueOf(data.get(position).getString("fullname")).equals("")){
+                holder.fotografer.setText("Fotografer belum tersedia");
+            }else{
+                holder.fotografer.setText(String.valueOf(data.get(position).getString("fullname")));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -116,6 +121,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
         public TextView sesi;
         public TextView tanggal;
         public TextView biaya;
+        public TextView fotografer;
         public Button tombolstatus;
         public Button status;
 
@@ -128,6 +134,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
             biaya = itemView.findViewById(R.id.harga4);
             tanggal = itemView.findViewById(R.id.tanggal_mulai);
             status = itemView.findViewById(R.id.status);
+            fotografer = itemView.findViewById(R.id.nama_fotografer);
             itemView.setOnClickListener(this);
         }
 
