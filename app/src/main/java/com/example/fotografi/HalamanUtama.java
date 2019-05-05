@@ -34,6 +34,7 @@ public class HalamanUtama extends Fragment {
     private SessionHandler session;
     private ArrayList<JSONObject> array = new ArrayList<>();
     private String pesanan_url = "https://fotografidb.herokuapp.com/getpesanan.php";
+    private String pesanankustomer_url = "https://fotografidb.herokuapp.com/getpesanankustomer.php";
 
     HalamanUtamaAdapter adapter;
 
@@ -79,7 +80,42 @@ public class HalamanUtama extends Fragment {
             // Access the RequestQueue through your singleton class.
             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
         }else{
+            JSONObject rqst = new JSONObject();
+            try {
+                rqst.put("user_id", session.getUserDetails().getUser_id());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray request = new JSONArray();
+            //Populate the request parameters
+            request.put(rqst);
 
+            JsonArrayRequest jsArrayRequest = new JsonArrayRequest(Request.Method.POST, pesanankustomer_url, request, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    for(int i = 0; i < response.length(); i++) {
+
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            array.add(jsonObject);
+                            Toast.makeText(getActivity().getApplicationContext(),"Babik",Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    adapter = new HalamanUtamaAdapter (getActivity(),array);
+                    recyclerView.setAdapter(adapter);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //Display error message whenever an error occurs
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            // Access the RequestQueue through your singleton class.
+            MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
         }
 
         return rootView;
