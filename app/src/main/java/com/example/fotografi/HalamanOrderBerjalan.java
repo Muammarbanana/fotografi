@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,6 +32,7 @@ public class HalamanOrderBerjalan extends Fragment implements SwipeRefreshLayout
     private SwipeRefreshLayout swipeRefreshLayout;
     private ArrayList<JSONObject> array = new ArrayList<>();
     private String pesananberjalan_url = "https://fotografidb.herokuapp.com/getpesananberjalan.php";
+    private TextView no_order;
 
     HalamanUtamaAdapter adapter;
 
@@ -41,6 +43,7 @@ public class HalamanOrderBerjalan extends Fragment implements SwipeRefreshLayout
 
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh1);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.rvutama);
+        no_order = rootView.findViewById(R.id.no_order);
         int numberOfColumns = 1;
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
 
@@ -83,6 +86,11 @@ public class HalamanOrderBerjalan extends Fragment implements SwipeRefreshLayout
                 adapter = new HalamanUtamaAdapter (getActivity(),array);
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
+                if(array.size()==0){
+                    no_order.setVisibility(View.VISIBLE);
+                }else{
+                    no_order.setVisibility(View.INVISIBLE);
+                }
             }
         }, new Response.ErrorListener() {
             @Override

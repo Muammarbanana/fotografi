@@ -28,6 +28,7 @@ import com.example.fotografi.login_register.SessionHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
     private SharedPreferences.Editor mInfopesananedit;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView no_order;
 
     HalamanUtamaAdapter adapter;
 
@@ -54,6 +56,7 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
         mInfopesananedit = mInfopesanan.edit();
         swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh1);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.rvutama);
+        no_order = rootView.findViewById(R.id.no_order);
         int numberOfColumns = 1;
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
 
@@ -88,6 +91,11 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
                             adapter = new HalamanUtamaAdapter (getActivity(),array);
                             recyclerView.setAdapter(adapter);
                             swipeRefreshLayout.setRefreshing(false);
+                            if(array.size()==0){
+                                no_order.setVisibility(View.VISIBLE);
+                            }else{
+                                no_order.setVisibility(View.INVISIBLE);
+                            }
                         }
                     }, new Response.ErrorListener() {
 
@@ -132,6 +140,11 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
                     adapter = new HalamanUtamaAdapter (getActivity(),array);
                     recyclerView.setAdapter(adapter);
                     swipeRefreshLayout.setRefreshing(false);
+                    if(array.size()==0){
+                        no_order.setVisibility(View.VISIBLE);
+                    }else{
+                        no_order.setVisibility(View.INVISIBLE);
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override

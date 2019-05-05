@@ -39,5 +39,21 @@
             android:layout_marginRight="8dp" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/no_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Tidak Ada Pesanan"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/swiperefresh1"
+        app:layout_constraintEnd_toEndOf="@+id/swiperefresh1"
+        app:layout_constraintStart_toStartOf="@+id/swiperefresh1"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
 
 </android.support.constraint.ConstraintLayout>
