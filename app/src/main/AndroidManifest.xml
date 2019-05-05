@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HalamanOrderBerjalan"></activity>
+        <activity android:name=".HalamanKomplet"></activity>
+        <activity android:name=".HalamanOrderBerjalan" />
         <activity
             android:name=".HalamanUtamaRevised"
             android:label="@string/title_activity_halaman_utama_revised"

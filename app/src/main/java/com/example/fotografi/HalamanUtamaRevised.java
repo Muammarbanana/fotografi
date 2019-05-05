@@ -131,8 +131,12 @@ public class HalamanUtamaRevised extends AppCompatActivity
             fragment = new HalamanUtama();
             displaySelectedFragment(fragment);
             return true;
-        } else if (id == R.id.nav_pesanan_berjalan){
+        } else if (id == R.id.nav_pesanan_berjalan) {
             fragment = new HalamanOrderBerjalan();
+            displaySelectedFragment(fragment);
+            return true;
+        } else if (id == R.id.nav_pesanan_selesai){
+            fragment = new HalamanKomplet();
             displaySelectedFragment(fragment);
             return true;
         } else if (id == R.id.nav_ulasan) {

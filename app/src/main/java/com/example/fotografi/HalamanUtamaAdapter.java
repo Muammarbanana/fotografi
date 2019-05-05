@@ -97,7 +97,6 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
         });
         if(session.getUserDetails().getType().equals("fotografer")){
             holder.tombolstatus.setOnClickListener(new View.OnClickListener() {
-                int i = 1;
 
                 AlertDialog dialog = builder2.create();
 
