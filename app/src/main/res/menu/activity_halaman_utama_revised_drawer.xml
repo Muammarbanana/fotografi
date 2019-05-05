@@ -6,15 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_pesanan"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_cloud_black_24dp"
             android:title="Pesanan" />
         <item
             android:id="@+id/nav_pesanan_berjalan"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_cloud_download_black_24dp"
             android:title="Pesanan Berjalan" />
         <item
+            android:id="@+id/nav_pesanan_selesai"
+            android:icon="@drawable/ic_cloud_done_black_24dp"
+            android:title="Pesanan Selesai" />
+        <item
             android:id="@+id/nav_ulasan"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_insert_comment_black_24dp"
             android:title="Ulasan" />
         <item
             android:id="@+id/nav_keluar"
