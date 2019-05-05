@@ -65,7 +65,7 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
                 loadData();
             }
         });
-        
+
         return rootView;
     }
 
@@ -145,6 +145,7 @@ public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefre
             // Access the RequestQueue through your singleton class.
             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
         }
+        array.clear();
     }
 
     @Override
