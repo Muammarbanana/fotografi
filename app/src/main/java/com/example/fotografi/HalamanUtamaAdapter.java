@@ -131,8 +131,8 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
             super(itemView);
             hargatotalku = itemView.findViewById(R.id.harga_total);
             tombolstatus = itemView.findViewById(R.id.buttonproses);
-            lokasi = itemView.findViewById(R.id.harga1);
-            sesi = itemView.findViewById(R.id.harga2);
+            lokasi = itemView.findViewById(R.id.harga2);
+            sesi = itemView.findViewById(R.id.harga1);
             biaya = itemView.findViewById(R.id.harga4);
             tanggal = itemView.findViewById(R.id.tanggal_mulai);
             status = itemView.findViewById(R.id.status);

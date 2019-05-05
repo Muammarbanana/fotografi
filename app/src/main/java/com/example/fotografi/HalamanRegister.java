@@ -150,4 +150,8 @@ public class HalamanRegister extends AppCompatActivity {
 
         return true;
     }
+
+    public void kembali(View view) {
+        finish();
+    }
 }

@@ -1,10 +1,12 @@
 package com.example.fotografi;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -30,11 +32,15 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HalamanUtama extends Fragment {
+public class HalamanUtama extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private SessionHandler session;
     private ArrayList<JSONObject> array = new ArrayList<>();
     private String pesanan_url = "https://fotografidb.herokuapp.com/getpesanan.php";
     private String pesanankustomer_url = "https://fotografidb.herokuapp.com/getpesanankustomer.php";
+    private SharedPreferences mInfopesanan;
+    private SharedPreferences.Editor mInfopesananedit;
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     HalamanUtamaAdapter adapter;
 
@@ -42,12 +48,29 @@ public class HalamanUtama extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         session = new SessionHandler(getActivity().getApplicationContext());
+        mInfopesanan = getActivity().getSharedPreferences("info_pesanan", getActivity().getApplicationContext().MODE_PRIVATE);
         View rootView = inflater.inflate(R.layout.activity_halaman_utama, container, false);
 
-        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rvutama);
+        mInfopesananedit = mInfopesanan.edit();
+        swipeRefreshLayout = rootView.findViewById(R.id.swiperefresh1);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rvutama);
         int numberOfColumns = 1;
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
 
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                loadData();
+            }
+        });
+        
+        return rootView;
+    }
+
+    public void loadData(){
+        swipeRefreshLayout.setRefreshing(true);
         if(session.getUserDetails().getType().equals("fotografer")){
             JsonArrayRequest jsArrayRequest = new JsonArrayRequest
                     (pesanan_url, new Response.Listener<JSONArray>() {
@@ -64,6 +87,7 @@ public class HalamanUtama extends Fragment {
                             }
                             adapter = new HalamanUtamaAdapter (getActivity(),array);
                             recyclerView.setAdapter(adapter);
+                            swipeRefreshLayout.setRefreshing(false);
                         }
                     }, new Response.ErrorListener() {
 
@@ -73,6 +97,7 @@ public class HalamanUtama extends Fragment {
                             //Display error message whenever an error occurs
                             Toast.makeText(getActivity().getApplicationContext(),
                                     error.getMessage(), Toast.LENGTH_SHORT).show();
+                            swipeRefreshLayout.setRefreshing(false);
 
                         }
                     });
@@ -98,13 +123,15 @@ public class HalamanUtama extends Fragment {
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);
                             array.add(jsonObject);
-                            Toast.makeText(getActivity().getApplicationContext(),"Babik",Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
+                    mInfopesananedit.putInt("arraysize",array.size());
+                    mInfopesananedit.apply();
                     adapter = new HalamanUtamaAdapter (getActivity(),array);
                     recyclerView.setAdapter(adapter);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -112,13 +139,16 @@ public class HalamanUtama extends Fragment {
                     //Display error message whenever an error occurs
                     Toast.makeText(getActivity().getApplicationContext(),
                             error.getMessage(), Toast.LENGTH_SHORT).show();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             });
             // Access the RequestQueue through your singleton class.
             MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsArrayRequest);
         }
-
-        return rootView;
     }
 
+    @Override
+    public void onRefresh() {
+        loadData();
+    }
 }

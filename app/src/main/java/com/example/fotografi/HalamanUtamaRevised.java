@@ -1,6 +1,8 @@
 package com.example.fotografi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,6 +26,7 @@ public class HalamanUtamaRevised extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SessionHandler session;
+    private SharedPreferences mInfopesanan;
     private TextView username_nav;
     private TextView email_nav;
 
@@ -32,6 +35,7 @@ public class HalamanUtamaRevised extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_utama_revised);
 
+        mInfopesanan = getSharedPreferences("info_pesanan", Context.MODE_PRIVATE);
         session = new SessionHandler(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,7 +75,7 @@ public class HalamanUtamaRevised extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(session.getUserDetails().getType().equals("fotografer")){
+        if(session.getUserDetails().getType().equals("fotografer") || mInfopesanan.getInt("arraysize",0)!=0){
             fab.hide();
         }
 
