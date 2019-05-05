@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Pesanan" />
         <item
+            android:id="@+id/nav_pesanan_berjalan"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Pesanan Berjalan" />
+        <item
             android:id="@+id/nav_ulasan"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Ulasan" />

@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,6 +30,7 @@ public class HalamanUtamaRevised extends AppCompatActivity
     private SharedPreferences mInfopesanan;
     private TextView username_nav;
     private TextView email_nav;
+    private NavigationView nav_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,13 @@ public class HalamanUtamaRevised extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(session.getUserDetails().getType().equals("fotografer") || mInfopesanan.getInt("arraysize",0)!=0){
+        if(session.getUserDetails().getType().equals("fotografer")){
             fab.hide();
+        }else if (mInfopesanan.getInt("arraysize",0)!=0){
+            fab.hide();
+            hideItem();
+        }else{
+            hideItem();
         }
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -120,9 +127,13 @@ public class HalamanUtamaRevised extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
-        Class fragmentClass = null;
         if (id == R.id.nav_pesanan) {
-            fragmentClass = HalamanUtama.class;
+            fragment = new HalamanUtama();
+            displaySelectedFragment(fragment);
+            return true;
+        } else if (id == R.id.nav_pesanan_berjalan){
+            fragment = new HalamanOrderBerjalan();
+            displaySelectedFragment(fragment);
             return true;
         } else if (id == R.id.nav_ulasan) {
             Intent i = new Intent(this, HalamanRating.class);
@@ -141,5 +152,17 @@ public class HalamanUtamaRevised extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void hideItem(){
+        nav_view = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = nav_view.getMenu();
+        nav_Menu.findItem(R.id.nav_pesanan_berjalan).setVisible(false);
+    }
+
+    private void displaySelectedFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.flutama, fragment);
+        fragmentTransaction.commit();
     }
 }
