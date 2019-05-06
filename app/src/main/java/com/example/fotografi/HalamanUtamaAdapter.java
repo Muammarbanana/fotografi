@@ -33,6 +33,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
     private Context context;
     private AlertDialog.Builder builder2;
     private String updatestatus_url = "https://fotografidb.herokuapp.com/updatestatus.php";
+    private String tambahulasan_url = "https://fotografidb.herokuapp.com/tambahulasan.php";
 
     HalamanUtamaAdapter(Context context, ArrayList<JSONObject> data){
         this.mInflater = LayoutInflater.from(context);
@@ -83,6 +84,9 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
                             String id_user = session.getUserDetails().getUser_id();
                             String pesanan_id = String.valueOf(data.get(position).getString("id_pesanan"));
                             updateStatus(id_user,nextstatus(statusnya),pesanan_id);
+                            if(statusnya.equals("Transfer Full")){
+                                tambahUlasan(pesanan_id);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -178,6 +182,49 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
                                 //Set the user session
                                 Toast.makeText(context,"Update berhasil",Toast.LENGTH_SHORT).show();
 
+                            }else{
+                                Toast.makeText(context,
+                                        response.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        //Display error message whenever an error occurs
+
+                        Toast.makeText(context,
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(context).addToRequestQueue(jsArrayRequest);
+    }
+
+    public void tambahUlasan(String id_pesanan){
+        JSONObject request = new JSONObject();
+        try {
+            //Populate the request parameters
+            request.put("id_pesanan", id_pesanan);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsArrayRequest = new JsonObjectRequest
+                (Request.Method.POST, tambahulasan_url, request, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            //Check if user got registered successfully
+                            if (response.getInt(KEY_STATUS) == 0) {
+                                //Set the user session
                             }else{
                                 Toast.makeText(context,
                                         response.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();

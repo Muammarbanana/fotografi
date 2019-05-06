@@ -1,6 +1,7 @@
 package com.example.fotografi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,19 @@ public class HalamanDaftarUlasanAdapter extends RecyclerView.Adapter<HalamanDaft
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        holder.tombolulasan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),HalamanRating.class);
+                try {
+                    intent.putExtra("id_pesanan",String.valueOf(data.get(position).getString("id_pesanan")));
+                    intent.putExtra("full_name",String.valueOf(data.get(position).getString("full_name")));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
