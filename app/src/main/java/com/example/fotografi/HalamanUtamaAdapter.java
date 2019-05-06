@@ -20,9 +20,7 @@ import com.example.fotografi.login_register.SessionHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapter.ViewHolder> {
@@ -130,7 +128,7 @@ public class HalamanUtamaAdapter extends RecyclerView.Adapter<HalamanUtamaAdapte
             tombolstatus = itemView.findViewById(R.id.buttonproses);
             lokasi = itemView.findViewById(R.id.harga2);
             sesi = itemView.findViewById(R.id.harga1);
-            biaya = itemView.findViewById(R.id.harga4);
+            biaya = itemView.findViewById(R.id.ratingvalue);
             tanggal = itemView.findViewById(R.id.tanggal_mulai);
             status = itemView.findViewById(R.id.status);
             fotografer = itemView.findViewById(R.id.nama_fotografer);

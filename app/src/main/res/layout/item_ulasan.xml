@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75" />
+            app:layout_constraintGuide_percent="0.63" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline23"
@@ -103,7 +103,7 @@
             android:background="@drawable/rounded_button_status"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="@string/status"
+            android:text="@string/ulasan"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toTopOf="@+id/garis1"
@@ -163,7 +163,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/biaya_1"
+            android:text="Rating"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/garis2"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
@@ -285,7 +285,7 @@
             app:layout_constraintTop_toBottomOf="@id/guideline20" />
 
         <TextView
-            android:id="@+id/total_biaya"
+            android:id="@+id/komentar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -294,7 +294,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/total_biaya"
+            android:text="Komentar"
             app:layout_constraintBottom_toBottomOf="@id/guideline23"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="0.0"
@@ -302,7 +302,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline20" />
 
         <TextView
-            android:id="@+id/harga_total"
+            android:id="@+id/valuekomentar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -323,7 +323,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/rounded_button"
-            android:text="@string/proceed_to_next_phase"
+            android:text="@string/beri_ulasan"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="parent"

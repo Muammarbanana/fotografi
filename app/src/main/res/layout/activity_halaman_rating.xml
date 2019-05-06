@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_login"
+
     tools:context=".HalamanRating">
 
     <android.support.constraint.Guideline
@@ -79,7 +79,7 @@
         android:id="@+id/profil_foto"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/fotografer"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
@@ -269,7 +269,6 @@
         android:textAllCaps="false"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
-        android:onClick="toorderpage"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline12"

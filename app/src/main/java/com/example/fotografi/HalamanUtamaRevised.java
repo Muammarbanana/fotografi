@@ -140,8 +140,8 @@ public class HalamanUtamaRevised extends AppCompatActivity
             displaySelectedFragment(fragment);
             return true;
         } else if (id == R.id.nav_ulasan) {
-            Intent i = new Intent(this, HalamanRating.class);
-            startActivity(i);
+            fragment = new HalamanDaftarUlasan();
+            displaySelectedFragment(fragment);
             return true;
         } else if (id == R.id.nav_keluar) {
             session.logoutUser();

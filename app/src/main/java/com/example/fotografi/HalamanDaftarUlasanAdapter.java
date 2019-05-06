@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HalamanKompletAdapter extends RecyclerView.Adapter<HalamanKompletAdapter.ViewHolder> {
+public class HalamanDaftarUlasanAdapter extends RecyclerView.Adapter<HalamanDaftarUlasanAdapter.ViewHolder> {
 
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
@@ -24,30 +24,41 @@ public class HalamanKompletAdapter extends RecyclerView.Adapter<HalamanKompletAd
     private SessionHandler session;
     private Context context;
 
-    HalamanKompletAdapter(Context context, ArrayList<JSONObject> data){
+    HalamanDaftarUlasanAdapter(Context context, ArrayList<JSONObject> data){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.data = data;
         session = new SessionHandler(context);
     }
-    public HalamanKompletAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_pesanan_kustomer, parent, false);
-        return new HalamanKompletAdapter.ViewHolder(view);
+    public HalamanDaftarUlasanAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.item_ulasan, parent, false);
+        return new HalamanDaftarUlasanAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final HalamanKompletAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final HalamanDaftarUlasanAdapter.ViewHolder holder, final int position) {
         try {
-            holder.hargatotalku.setText(String.valueOf(data.get(position).getString("biaya")));
-            holder.status.setText(String.valueOf(data.get(position).getString("status")));
             holder.sesi.setText(String.valueOf(data.get(position).getString("sesi")));
-            holder.biaya.setText(String.valueOf(data.get(position).getString("biaya")));
             holder.lokasi.setText(String.valueOf(data.get(position).getString("lokasi")));
             holder.tanggal.setText(String.valueOf(data.get(position).getString("tanggal")));
-            if(String.valueOf(data.get(position).getString("fullname")).equals("")){
+            if(String.valueOf(data.get(position).getString("full_name")).equals("")){
                 holder.fotografer.setText("Fotografer belum tersedia");
             }else{
-                holder.fotografer.setText(String.valueOf(data.get(position).getString("fullname")));
+                holder.fotografer.setText(String.valueOf(data.get(position).getString("full_name")));
+            }
+            if(String.valueOf(data.get(position).getString("rating")).equals("null")){
+                holder.rating.setText("Belum tersedia");
+            }else{
+                holder.rating.setText(String.valueOf(data.get(position).getString("rating")));
+            }
+            if(String.valueOf(data.get(position).getString("komentar")).equals("null")){
+                holder.komentar.setText("Belum tersedia");
+            }else{
+                holder.tombolulasan.setVisibility(View.GONE);
+                holder.komentar.setText(String.valueOf(data.get(position).getString("komentar")));
+            }
+            if(session.getUserDetails().getType().equals("fotografer")){
+                holder.tombolulasan.setVisibility(View.GONE);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -60,24 +71,22 @@ public class HalamanKompletAdapter extends RecyclerView.Adapter<HalamanKompletAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView hargatotalku;
+        public TextView komentar;
         public TextView lokasi;
         public TextView sesi;
         public TextView tanggal;
-        public TextView biaya;
+        public TextView rating;
         public TextView fotografer;
-        public Button tombolstatus;
-        public Button status;
+        public Button tombolulasan;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            hargatotalku = itemView.findViewById(R.id.harga_total);
-            tombolstatus = itemView.findViewById(R.id.buttonproses);
+            komentar = itemView.findViewById(R.id.valuekomentar);
+            tombolulasan = itemView.findViewById(R.id.buttonproses);
             lokasi = itemView.findViewById(R.id.harga2);
             sesi = itemView.findViewById(R.id.harga1);
-            biaya = itemView.findViewById(R.id.ratingvalue);
+            rating = itemView.findViewById(R.id.ratingvalue);
             tanggal = itemView.findViewById(R.id.tanggal_mulai);
-            status = itemView.findViewById(R.id.status);
             fotografer = itemView.findViewById(R.id.nama_fotografer);
             itemView.setOnClickListener(this);
         }
